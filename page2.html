@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>My page</title>
+    <link rel="stylesheet" href="tableform.css">
+    <style>
+        body {background:url('meo1.jpg')no-repeat fixed center center;-webkit-transition: all 1.0s ease;-moz-transition: all 1.0s ease;transition: all 1.0s ease;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        }
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+          }
+    </style>
+    <script type="text/javascript">
+        var num;
+        var temp=0;
+        var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
+        var preloads=[];
+        /* add any number of images here */
+        preload(
+        'meo2.jpg',
+        'meo3.jpg',
+        'meo4.jpg',
+        'meo5.jpg'
+        );
+        function preload(){
+        for(var c=0;c<arguments.length;c++) {
+        preloads[preloads.length]=new Image();
+        preloads[preloads.length-1].src=arguments[c];
+        }
+        }
+        function rotateImages() {
+        num=Math.floor(Math.random()*preloads.length);
+        if(num==temp){
+        rotateImages();
+        }
+        else{
+        document.body.style.backgroundImage='url('+preloads[num].src+')';
+        temp=num;
+        setTimeout(function(){rotateImages()},speed);
+        }
+        }
+        
+        if(window.addEventListener){
+        window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+        }
+        else {
+        if(window.attachEvent){
+        window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
+        }
+        }
+        </script>
+</head>
+<body>
+    <div class="center">
+        <button><a href="code.html">Предыдущая страница</a></button>
+    </div>
+    <table border="2">
+        <tr>
+            <th>Время</th>
+            <th>Дисциплина</th>
+            <th>Преподаватель</th>
+            <th>Аудитория</th>
+        </tr>
+        <tr>
+            <td>9:00 - 10:30</td>
+            <td>Основы теории автоматического управления</td>
+            <td>Белоногов Виктор Дмитриевич</td>
+            <td>3-247</td>
+        </tr>
+        <tr>
+            <td>10:45 - 12:15</td>
+            <td>Социология</td>
+            <td>Южанин Максим Александрович</td>
+            <td>7-402</td>
+        </tr>
+        <tr>
+            <td>13:00 - 14:30</td>
+            <td>Технические средства автоматизации и управления</td>
+            <td>Шлеенкин Лев Алексеевич</td>
+            <td>3-441</td>
+        </tr>
+        <tr>
+            <td>14:45  - 16:15</td>
+            <td>Экономическая теория</td>
+            <td>Ласточкина Вера Владимировна</td>
+            <td>3-303</td>
+        </tr>
+    </table>
+</body>
+</html>
